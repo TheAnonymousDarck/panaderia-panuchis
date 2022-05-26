@@ -1,0 +1,8 @@
+{
+  "name": "Panaderia Panuchis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "f9dc314d"
+}
