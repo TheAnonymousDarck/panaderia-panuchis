@@ -1,0 +1,69 @@
+<template>
+    <ion-page>
+        <ion-content :fullscreen="true">
+
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="10">
+                    <ion-card>
+                        <!-- <ion-card-header>
+                            <center>
+                                <img src="../assets/logos/pan.png" alt="" width="250" height="280">
+                            </center>
+                        </ion-card-header> -->
+                        <ion-card-content>
+                            <!-- <ion-card-title v-if="isLogin"> <center> Iniciar Sesión </center>  </ion-card-title>
+                            <ion-card-title v-if="isRegister"> <center> Regístrate </center> </ion-card-title>
+                            
+                            <LoginForm v-if="isLogin"/>
+                            <RegisterForm v-if="isRegister"/> 
+                            <ion-button v-if="isRegister" @click="setLogin(true) && setRegister(false)" expand="block" fill="clear" shape="round">
+                                Inicia Sesión
+                            </ion-button>
+                            <ion-button v-if="isLogin" @click="setRegister(true) && setLogin(false)" expand="block" fill="clear" shape="round">
+                                Registrate
+                            </ion-button> -->
+
+                            <ion-row>
+                                <ion-col size="4">
+                                    <center>
+                                        <img src="../assets/logos/pan.png" alt="" width="250" height="280">
+                                    </center>
+                                </ion-col>
+                                <ion-col size="8">
+                                    <ion-card-title v-if="isLogin"> <center> Iniciar Sesión </center>  </ion-card-title>
+                                    <ion-card-title v-if="isRegister"> <center> Regístrate </center> </ion-card-title>
+                                    
+                                    <LoginForm v-if="isLogin"/>
+                                    <RegisterForm v-if="isRegister"/> 
+                                    <ion-button v-if="isRegister" @click="setLogin(true) && setRegister(false)" expand="block" fill="clear" shape="round">
+                                        Inicia Sesión
+                                    </ion-button>
+                                    <ion-button v-if="isLogin" @click="setRegister(true) && setLogin(false)" expand="block" fill="clear" shape="round">
+                                        Registrate
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                            
+
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        </ion-content>
+    </ion-page>
+</template>
+
+<script lang="ts" setup>
+import {  IonContent, IonPage, IonCard, IonCardTitle, IonCardContent, IonButton } from '@ionic/vue';
+import { ref } from 'vue';
+import LoginForm from '@/components/login/LoginForm.vue';
+import RegisterForm from '@/components/login/RegisterForm.vue';
+
+const isLogin = ref(true);
+const isRegister = ref(false);
+const setLogin = (state: boolean) => isLogin.value = state;
+const setRegister = (state: boolean) => isRegister.value = state;
+</script>
