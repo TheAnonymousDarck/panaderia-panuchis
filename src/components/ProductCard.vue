@@ -40,7 +40,7 @@
 
         </ion-card-content>
     </ion-card>
-    
+
 </template>
 
 <script lang="ts" setup>
@@ -64,7 +64,7 @@ const productos = {
     cantidad: 20,
     disponible: true,
     imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9EoNqp9I74KMrwEkYampF8MgoMURx1oMBrA&usqp=CAU'
-}
+};
 
 const total = 150;
 
