@@ -7,7 +7,6 @@
     </ion-header>
     <ion-content :fullscreen="true">
 
-      <!-- List of Text Items -->
       <ion-list >
         <product-card/>
         

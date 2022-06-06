@@ -31,10 +31,10 @@ const formData = {
     contrasena:'',
 }
 
-async function openToast() {
+async function openToast(msg:string) {
     const toast = await toastController
     .create({
-        message: 'Contacto agegado',
+        message: msg,
         duration: 2000
     })
     return toast.present();

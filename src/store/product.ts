@@ -1,17 +1,19 @@
 import { db } from "@/firebase";
 import { query, collection, orderBy, getDocs } from "firebase/firestore";
 import { defineStore } from "pinia";
+import { Product } from './../interfaces/interfaces';
+
 
 export const useProductStore = defineStore('pan', {
     // lo que quiero mantener en el estado de manera global va aquí
     state: () => ({ 
         products: [],
-
+        
     }),
 
     // los metodos globales de este Store
     actions: {
-        async obtenerDatos () {
+        async getData () {
             const first = query(
                 collection(db, "products"),
                 orderBy("nombre"),
@@ -26,5 +28,8 @@ export const useProductStore = defineStore('pan', {
         //         console.log(this.products);
         //     });
         },
+        
+
+        addCart(){ return},
     },
 });
