@@ -2,11 +2,10 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Tab 2</ion-title>
+        <ion-title>Carrito</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-
     </ion-content>
   </ion-page>
 </template>

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Panaderia Panuchis",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

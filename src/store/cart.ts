@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useCarStore = defineStore('car', {
+export const useCartStore = defineStore('car', {
     // lo que quiero mantener en el estado de manera global va aquí
     state: () => ({ 
 

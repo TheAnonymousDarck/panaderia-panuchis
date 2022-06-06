@@ -1,17 +1,47 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import IndexPage from '@/views/IndexPage.vue';
+import TabsPage from '@/views/TabsPage.vue';
 
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    redirect: '/index'
-  },
+  // {
+  //   path: '/',
+  //   redirect: '/index'
+  // },
   {
     path:'/index',
     name:'index',
     component: IndexPage
+  },
+  {
+    path: '/',
+    redirect: '/tabs/home'
+  },
+  {
+    path: '/tabs/',
+    component: TabsPage,
+    children: [
+      {
+        path: '',
+        redirect: '/tabs/home'
+      },
+      {
+        path: 'home',
+        component: () => import('@/views/TabHomePage.vue')
+      },
+      {
+        path: 'order',
+        component: () => import('@/views/TabOrderPage.vue')
+      },
+      {
+        path: 'cart',
+        component: () => import('@/views/TabCartPage.vue')
+      },{
+        path: 'profile',
+        component: () => import('@/views/TabProfilePage.vue')
+      }
+    ]
   }
 ]
 

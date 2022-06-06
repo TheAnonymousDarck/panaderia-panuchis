@@ -5,13 +5,11 @@
         <ion-grid fixed>
             <ion-row>
                 <ion-col size="10">
-                    <ion-card>
+                    <!-- <ion-card> -->
                         <!-- <ion-card-header>
-                            <center>
-                                <img src="../assets/logos/pan.png" alt="" width="250" height="280">
-                            </center>
-                        </ion-card-header> -->
-                        <ion-card-content>
+                            
+                        </ion-card-header>  -->
+                        <!-- <ion-card-content> -->
                             <!-- <ion-card-title v-if="isLogin"> <center> Iniciar Sesión </center>  </ion-card-title>
                             <ion-card-title v-if="isRegister"> <center> Regístrate </center> </ion-card-title>
                             
@@ -25,12 +23,22 @@
                             </ion-button> -->
 
                             <ion-row>
-                                <ion-col size="4">
+                                
+                                <!-- <ion-col size="4">
                                     <center>
                                         <img src="../assets/logos/pan.png" alt="" width="250" height="280">
                                     </center>
-                                </ion-col>
-                                <ion-col size="8">
+                                </ion-col> -->
+                                <ion-col size="12">
+                                    <ion-card>
+                                        <ion-card-header>
+                                            <center>
+                                                <ion-card-title>Bienvenido</ion-card-title>
+                                                <img src="../assets/logos/pan.png" alt="" width="250" height="280">
+                                                <ion-card-subtitle>¿Otra conchita o que?</ion-card-subtitle>
+                                            </center>
+                                        </ion-card-header>
+                                    
                                     <ion-card-title v-if="isLogin"> <center> Iniciar Sesión </center>  </ion-card-title>
                                     <ion-card-title v-if="isRegister"> <center> Regístrate </center> </ion-card-title>
                                     
@@ -42,12 +50,15 @@
                                     <ion-button v-if="isLogin" @click="setRegister(true) && setLogin(false)" expand="block" fill="clear" shape="round">
                                         Registrate
                                     </ion-button>
+
+                                    </ion-card>
+
                                 </ion-col>
                             </ion-row>
                             
 
-                        </ion-card-content>
-                    </ion-card>
+                        <!-- </ion-card-content>
+                    </ion-card> -->
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -57,10 +68,10 @@
 </template>
 
 <script lang="ts" setup>
-import {  IonContent, IonPage, IonCard, IonCardTitle, IonCardContent, IonButton } from '@ionic/vue';
+import {  IonContent, IonPage, IonCard, IonCardTitle, IonButton } from '@ionic/vue';
 import { ref } from 'vue';
-import LoginForm from '@/components/login/LoginForm.vue';
-import RegisterForm from '@/components/login/RegisterForm.vue';
+import LoginForm from '@/components/LoginForm.vue';
+import RegisterForm from '@/components/RegisterForm.vue';
 
 const isLogin = ref(true);
 const isRegister = ref(false);
