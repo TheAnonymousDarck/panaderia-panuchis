@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonButton, IonInput, IonItem, IonLabel, toastController } from '@ionic/vue';
+import { IonButton, IonInput, IonItem, IonLabel, IonIcon,toastController } from '@ionic/vue';
 import { mailOutline, logInOutline, keyOutline } from 'ionicons/icons';
 
 const formData = {

@@ -5,6 +5,7 @@ export interface Client {
     direccion: string;
     telefono: number;
     correo: string;
+    rol: string;
 }
 
 

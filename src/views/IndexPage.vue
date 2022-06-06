@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonContent, IonPage, IonCard, IonCardTitle, IonButton } from '@ionic/vue';
+import { IonContent, IonPage, IonCard, IonCardTitle, IonButton, IonGrid, IonRow, IonCol, IonCardHeader, IonCardSubtitle,  } from '@ionic/vue';
 import { ref } from 'vue';
 import LoginForm from '@/components/LoginForm.vue';
 import RegisterForm from '@/components/RegisterForm.vue';

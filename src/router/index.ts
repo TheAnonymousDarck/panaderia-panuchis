@@ -4,19 +4,21 @@ import IndexPage from '@/views/IndexPage.vue';
 import TabsPage from '@/views/TabsPage.vue';
 
 
+
 const routes: Array<RouteRecordRaw> = [
   // {
   //   path: '/',
-  //   redirect: '/index'
+  //   redirect: '/'
   // },
   {
-    path:'/index',
+    path:'/',
     name:'index',
     component: IndexPage
   },
   {
     path: '/',
-    redirect: '/tabs/home'
+    redirect: '/tabs/home',
+    meta: { requiresAuth: true }
   },
   {
     path: '/tabs/',
