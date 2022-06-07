@@ -6,13 +6,15 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <CartProducts/>
+
+    <!-- Aqui va el Crud -->
+
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import CartProducts from '@/components/CartProducts.vue';
+
 
 </script>

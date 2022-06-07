@@ -10,7 +10,10 @@
             <ion-avatar slot="start">
                 <img :src=foto />
             </ion-avatar>
-            <ion-card-subtitle> Id: {{ uid }} </ion-card-subtitle>
+            <ion-chip color="tertuary" mode="ios" outline="true">
+                <ion-label>Id: {{ uid }} </ion-label>
+            </ion-chip>
+            <!-- <ion-card-subtitle> </ion-card-subtitle> -->
         </center>
 
         
@@ -54,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonIcon, IonItem, IonButton, IonList, IonAvatar, IonLabel, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
+import { IonIcon, IonItem, IonButton, IonList, IonAvatar, IonLabel, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle, IonChip } from '@ionic/vue';
 import { mailOutline, callOutline, locationOutline, logOutOutline } from 'ionicons/icons';
 
 import { useAuthStore } from '@/store/auth'; 

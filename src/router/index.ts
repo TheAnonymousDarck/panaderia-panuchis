@@ -42,9 +42,15 @@ const routes: Array<RouteRecordRaw> = [
         path: 'cart',
         component: () => import('@/views/TabCartPage.vue'),
         meta: { requiresAuth: true }
-      },{
+      },
+      {
         path: 'profile',
         component: () => import('@/views/TabProfilePage.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'product',
+        component: () => import('@/views/TabProductPage.vue'),
         meta: { requiresAuth: true }
       }
     ]

@@ -14,6 +14,11 @@
           <ion-icon :icon="clipboardOutline"/>
           <ion-label>Ordenes</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="profile" href="/tabs/product">
+          <ion-icon :icon="cubeOutline" />
+          <ion-label>Productos</ion-label>
+        </ion-tab-button>
         
         <ion-tab-button tab="cart" href="/tabs/cart">
           <ion-icon :icon="cartOutline" />
@@ -32,6 +37,6 @@
 
 <script lang="ts" setup>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { homeOutline, cartOutline, clipboardOutline, personOutline } from 'ionicons/icons';
+import { homeOutline, cartOutline, clipboardOutline, personOutline, cubeOutline } from 'ionicons/icons';
 
 </script>
