@@ -26,11 +26,11 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 const pinia = createPinia();
-
 const app = createApp(App)
-  .use( pinia )
-  .use( IonicVue )
-  .use( router );
+
+app.use( IonicVue )
+app.use( pinia )
+app.use( router );
   
 router.isReady().then(() => {
   app.mount('#app');

@@ -1,30 +1,42 @@
 import { defineStore } from 'pinia';
 import router from "@/router";
-import { useUsersStore } from "./user";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth, db } from "@/firebase";
 
 import { useToast } from "@/composables/useFunctionallyCompoonent";
+import { Client } from '@/interfaces/interfaces';
+import { doc, setDoc } from 'firebase/firestore';
 
 const {  openToast, icons } = useToast() 
-const { addUserDB } = useUsersStore()
 
 export const useAuthStore = defineStore('auth', {
     // lo que quiero mantener en el estado de manera global va aquí
     state: () => ({ 
         isLoggedIn: false,
-        email: '',
-        password: '',
-        errorMessage: '',
+        uid: "",
+        nombre: "",
+        email: "",
+        password: "",
+        errorMessage: "",
+        foto: "",
+        direccion: "",
+        telefono: 0,
+        isAdmin: false,
     }),
     // los metodos globales de este Store
     actions: {
+        addUserDB(uid: string){
+            const docUserRef = doc(db, `users/${uid}`);
+            const newUser: Client = {uid: uid, nombre: this.nombre, password: this.password, correo: this.email, direccion: this.direccion, foto: this.foto, telefono:this.telefono, isAdmin: this.isAdmin};
+            setDoc(docUserRef, newUser);
+        },
+        
         register() {
             createUserWithEmailAndPassword(auth, this.email, this.password)
                 .then( (userCredential) => {
                     const user = userCredential.user;
-                    addUserDB(user.uid);
+                    this.addUserDB(user.uid);
                     // router.push('/tabs/home');
                     openToast('¡Usuario Registrado!', 'success', icons.check)
                 })

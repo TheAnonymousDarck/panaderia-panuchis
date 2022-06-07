@@ -1,33 +1,16 @@
 import { defineStore } from "pinia";
 import { db } from "@/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { Client } from './../interfaces/interfaces';
+import { doc, getDoc } from "firebase/firestore";
 
 
-export const useUsersStore = defineStore('user', {
+export const useUserStore = defineStore('user', {
     // lo que quiero mantener en el estado de manera global va aquí
     state: () => ({ 
         user: [],
-        isLoggedIn: false,
-        uid: "",
-        nombre: "",
-        email: "",
-        password: "",
-        errorMessage: "",
-        foto: "",
-        direccion: "",
-        telefono: 0,
-        isAdmin: false,
     }),
 
     // los metodos globales de este Store
     actions: {
-        addUserDB(uid: string){
-            const docUserRef = doc(db, `users/${uid}`);
-            const newUser: Client = {uid: uid, nombre: this.nombre, password: this.password, correo: this.email, direccion: this.direccion, foto: this.foto, telefono:this.telefono, isAdmin: this.isAdmin};
-            setDoc(docUserRef, newUser);
-        },
-        
         async getAdmin(uid: string){
             const docUserRef = doc(db, `users/${uid}`);
             const docCifred = await getDoc(docUserRef);
