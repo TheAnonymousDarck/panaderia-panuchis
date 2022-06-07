@@ -1,17 +1,16 @@
 <template>
-
 <ion-card>
     <ion-card-header>
         <center>
-            <ion-card-title>Información del Usuario</ion-card-title>
+            <ion-card-title>Información de {{ nombre }}</ion-card-title>
         </center>
     </ion-card-header>
     <ion-card-content>
         <center>
             <ion-avatar slot="start">
-                <img :src=user.imagen />
+                <img :src=foto />
             </ion-avatar>
-            <ion-card-subtitle> {{ user.user }} </ion-card-subtitle>
+            <ion-card-subtitle> {{ uid }} </ion-card-subtitle>
         </center>
 
         
@@ -20,21 +19,21 @@
             <ion-item>
                 <ion-icon slot="start" :icon="locationOutline"></ion-icon>
                 <ion-label>
-                    <h2> {{ user.direccion }} </h2>
+                    <h2> {{ direccion }} </h2>
                 </ion-label>
             </ion-item>
             
             <ion-item>
                 <ion-icon slot="start" :icon="callOutline"></ion-icon>
                 <ion-label>
-                    <h2> {{ user.telefono }} </h2>
+                    <h2> {{ telefono }} </h2>
                 </ion-label>
             </ion-item>
 
             <ion-item>
                 <ion-icon slot="start" :icon="mailOutline"></ion-icon>
                 <ion-label>
-                    <h2> {{ user.correo }} </h2>
+                    <h2> {{ email }} </h2>
                 </ion-label>
             </ion-item>
 
@@ -45,6 +44,7 @@
         </ion-list>
 
         <ion-button @click="authStore.signout()"  color="danger"  expand="full" fill="outline" shape="round">
+            <ion-icon slot="start" :icon="logOutOutline"></ion-icon>
             Cerrar Sesión
         </ion-button>
     
@@ -55,17 +55,21 @@
 
 <script lang="ts" setup>
 import { IonIcon, IonItem, IonButton, IonList, IonAvatar, IonLabel, IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle } from '@ionic/vue';
-import { mailOutline, callOutline, locationOutline } from 'ionicons/icons';
+import { mailOutline, callOutline, locationOutline, logOutOutline } from 'ionicons/icons';
 
 import { useAuthStore } from '@/store/auth'; 
+import { useUserStore } from '@/store/user';
 
+const { uid, nombre, email, foto, direccion, telefono }= useUserStore();
 const authStore = useAuthStore();
 
-const user = {
-    user: 'el roro',
-    correo: 'elroro69@gmail.com',
-    direccion:'Av. tangamandapio, col centro #110',
-    telefono: 4564564564,
-    imagen: 'https://elcomercio.pe/resizer/a9xgWW5w58rfbQ4qfqa2Pyp6Iew=/1200x1200/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/2HQ3QL6DZNEGPFL737J2JOFUOQ.jpg'
-}
+// const { uid,  } = user
+// const user = {
+//     nombre: 'el roro',
+//     email: 'elroro69@gmail.com',
+//     direccion:'Av. tangamandapio, col centro #110',
+//     telefono: 4564564564,
+// password: 'elrorischamorris',
+//     foto: 'https://elcomercio.pe/resizer/a9xgWW5w58rfbQ4qfqa2Pyp6Iew=/1200x1200/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/2HQ3QL6DZNEGPFL737J2JOFUOQ.jpg'
+// }
 </script>

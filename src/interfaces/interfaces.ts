@@ -5,7 +5,7 @@ export interface Client {
     foto: string,
     direccion: string;
     telefono: number;
-    correo: string;
+    email: string;
     isAdmin: boolean;
 }
 

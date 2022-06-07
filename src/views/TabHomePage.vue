@@ -6,6 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
+            <pre> {{ user }}</pre>
 
       <ion-list >
         <product-card/>
@@ -20,6 +21,8 @@
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList } from '@ionic/vue';
 import ProductCard from '@/components/ProductCard.vue';
+import { useUserStore } from '@/store/user';
 
+const { user } = useUserStore()
 
 </script>

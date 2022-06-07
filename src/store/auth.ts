@@ -23,14 +23,33 @@ export const useAuthStore = defineStore('auth', {
         direccion: "",
         telefono: 0,
         isAdmin: false,
+        routeAdmin: true,
     }),
     // los metodos globales de este Store
     actions: {
         addUserDB(uid: string){
             const docUserRef = doc(db, `users/${uid}`);
-            const newUser: Client = {uid: uid, nombre: this.nombre, password: this.password, correo: this.email, direccion: this.direccion, foto: this.foto, telefono:this.telefono, isAdmin: this.isAdmin};
+            const newUser: Client = {uid: uid, nombre: this.nombre, password: this.password, email: this.email, direccion: this.direccion, foto: this.foto, telefono:this.telefono, isAdmin: this.isAdmin};
             setDoc(docUserRef, newUser);
         },
+
+        // async getAdmin(uid: string){
+        //     const docUserRef = doc(db, `users/${uid}`);
+        //     const docCifred = await getDoc(docUserRef);
+        //     const finalData = docCifred.data();
+        //     this.setAdminRoute(finalData)
+        // },
+
+        // setAdminRoute(finalData:any){
+        //     this.isAdmin = finalData!.isAdmin
+
+        //     console.log('llego ', this.isAdmin);
+
+        //     if(!this.isAdmin){
+        //         this.routeAdmin = this.isAdmin
+        //     }
+            
+        // },
         
         register() {
             createUserWithEmailAndPassword(auth, this.email, this.password)
@@ -52,6 +71,7 @@ export const useAuthStore = defineStore('auth', {
                 .then((userCredential) => {
                     openToast('¡Sesión iniciada Correctamente!');
                     router.push("/tabs/home");
+                    
                     const user = userCredential.user;
                     console.log(user);
                     

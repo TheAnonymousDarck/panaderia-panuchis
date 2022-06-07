@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia' 
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import App from './App.vue'
 import router from './router';
@@ -26,7 +27,8 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 const pinia = createPinia();
-const app = createApp(App)
+const app = createApp(App);
+pinia.use(piniaPluginPersistedstate);
 
 app.use( IonicVue )
 app.use( pinia )

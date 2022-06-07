@@ -2,6 +2,7 @@
     <ion-page>
         <ion-content :fullscreen="true">
 
+
         <ion-grid fixed>
             <ion-row>
                 <ion-col size="10">
@@ -43,13 +44,17 @@
 </template>
 
 <script lang="ts" setup>
-import { IonContent, IonPage, IonCard, IonCardTitle, IonButton, IonGrid, IonRow, IonCol, IonCardHeader, IonCardSubtitle,  } from '@ionic/vue';
+import { IonContent, IonPage, IonCard, IonCardTitle, IonButton, IonGrid, IonRow, IonCol, IonCardHeader, IonCardSubtitle, } from '@ionic/vue';
 import { ref } from 'vue';
 import LoginForm from '@/components/LoginForm.vue';
 import RegisterForm from '@/components/RegisterForm.vue';
+
 
 const isLogin = ref(true);
 const isRegister = ref(false);
 const setLogin = (state: boolean) => isLogin.value = state;
 const setRegister = (state: boolean) => isRegister.value = state;
+
+// console.log(user);
+
 </script>

@@ -5,21 +5,28 @@
 </template>
 
 <script lang="ts" setup>
-import { IonApp, IonRouterOutlet, } from '@ionic/vue';
-import { onAuthStateChanged } from "firebase/auth";
-import { useAuthStore } from './store/auth';
-import { auth } from './firebase';
 import router from './router';
+import { IonApp, IonRouterOutlet, } from '@ionic/vue';
+
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from './firebase';
+
+import { useAuthStore } from './store/auth';
+import { useUserStore } from './store/user';
+
 import { useToast } from "@/composables/useFunctionallyCompoonent";
 
 const { openToast, icons } = useToast() 
 
 const authStore = useAuthStore()
+const userStore = useUserStore()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
       const uid = user.uid;
       authStore.isLoggedIn = true;
+      // authStore.getAdmin(uid);
+      userStore.getAdmin(uid);
       openToast('Bienvenido', 'success', icons.check);
       console.log('verdadero ' + uid)
   } else {
