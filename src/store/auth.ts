@@ -19,37 +19,19 @@ export const useAuthStore = defineStore('auth', {
         email: "",
         password: "",
         errorMessage: "",
-        foto: "",
+        foto: "https://freesvg.org/img/abstract-user-flat-4.png",
         direccion: "",
         telefono: 0,
         isAdmin: false,
-        routeAdmin: true,
     }),
     // los metodos globales de este Store
     actions: {
-        addUserDB(uid: string){
+        addUserDB(uid: string){ 
             const docUserRef = doc(db, `users/${uid}`);
             const newUser: Client = {uid: uid, nombre: this.nombre, password: this.password, email: this.email, direccion: this.direccion, foto: this.foto, telefono:this.telefono, isAdmin: this.isAdmin};
             setDoc(docUserRef, newUser);
         },
 
-        // async getAdmin(uid: string){
-        //     const docUserRef = doc(db, `users/${uid}`);
-        //     const docCifred = await getDoc(docUserRef);
-        //     const finalData = docCifred.data();
-        //     this.setAdminRoute(finalData)
-        // },
-
-        // setAdminRoute(finalData:any){
-        //     this.isAdmin = finalData!.isAdmin
-
-        //     console.log('llego ', this.isAdmin);
-
-        //     if(!this.isAdmin){
-        //         this.routeAdmin = this.isAdmin
-        //     }
-            
-        // },
         
         register() {
             createUserWithEmailAndPassword(auth, this.email, this.password)
@@ -70,7 +52,9 @@ export const useAuthStore = defineStore('auth', {
             signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((userCredential) => {
                     openToast('¡Sesión iniciada Correctamente!');
+
                     router.push("/tabs/home");
+                    // this.routeAdmin === this.isAdmin ? router.push('/admin') :  router.push("/tabs/home");
                     
                     const user = userCredential.user;
                     console.log(user);

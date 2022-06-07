@@ -32,7 +32,7 @@ onAuthStateChanged(auth, (user) => {
   } else {
       authStore.isLoggedIn = false;
       router.push('/');
-      openToast('no hay sesion de usuario', 'danger', icons.close);
+      openToast('no hay sesion de usuario', 'tertiary', icons.info);
       console.log('falso')
   }
 })

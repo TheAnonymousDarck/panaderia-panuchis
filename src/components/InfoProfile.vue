@@ -10,7 +10,7 @@
             <ion-avatar slot="start">
                 <img :src=foto />
             </ion-avatar>
-            <ion-card-subtitle> {{ uid }} </ion-card-subtitle>
+            <ion-card-subtitle> Id: {{ uid }} </ion-card-subtitle>
         </center>
 
         
@@ -60,7 +60,7 @@ import { mailOutline, callOutline, locationOutline, logOutOutline } from 'ionico
 import { useAuthStore } from '@/store/auth'; 
 import { useUserStore } from '@/store/user';
 
-const { uid, nombre, email, foto, direccion, telefono }= useUserStore();
+const { uid, nombre, email, foto, direccion, telefono, isAdmin }= useUserStore();
 const authStore = useAuthStore();
 
 // const { uid,  } = user

@@ -6,8 +6,6 @@ import TabsPage from '@/views/TabsPage.vue';
 import { auth } from '@/firebase';
 import { onAuthStateChanged, } from 'firebase/auth';
 import { useToast } from '@/composables/useFunctionallyCompoonent';
-import TabsAdminPage from '@/views/admin/TabsAdminPage.vue';
-import IndexAdminPage from '@/views/admin/IndexAdminPage.vue';
 
 const { openToast, icons } = useToast()
 
@@ -51,36 +49,6 @@ const routes: Array<RouteRecordRaw> = [
       }
     ]
   },
-  {
-    path: '/admin',
-    component: IndexAdminPage,
-    // redirect: '/admin/tabs/home',
-    // meta: { requiresAuth: true }
-  },
-  {
-    path: '/admin/tabs/',
-    component: TabsAdminPage,
-    children: [
-      {
-        path: '',
-        redirect: '/admin/tabs/home'
-      },
-      {
-        path: 'order',
-        component: () => import('@/views/admin/TabOrderPage.vue'),
-        meta: { requiresAuth: true }
-      },
-      {
-        path: 'inventario',
-        component: () => import('@/views/admin/TabInventarioPage.vue'),
-        meta: { requiresAuth: true }
-      },{
-        path: 'profile',
-        component: () => import('@/views/admin/TabProfilePage.vue'),
-        meta: { requiresAuth: true }
-      }
-    ]
-  }
 ]
 
 const router = createRouter({
