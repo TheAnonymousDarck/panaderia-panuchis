@@ -1,16 +1,16 @@
 <template>
 
-<form >
+<form @submit.prevent="authStore.signIn()" >
     <ion-item>
         <ion-icon slot="start" :icon="mailOutline"></ion-icon>
         <ion-label position="floating">Correo electronico</ion-label>
-        <ion-input type="email" v-model="formData.email" required></ion-input>
+        <ion-input type="email" v-model="authStore.email" required></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-icon slot="start" :icon="keyOutline"></ion-icon>
         <ion-label position="floating">Contraseña</ion-label>
-        <ion-input v-model="formData.contrasena" required></ion-input>
+        <ion-input v-model="authStore.password" required></ion-input>
     </ion-item>
 
     <ion-button type="submit" expand="block" shape="round" color="success">
@@ -23,21 +23,11 @@
 </template>
 
 <script lang="ts" setup>
-import { IonButton, IonInput, IonItem, IonLabel, IonIcon,toastController } from '@ionic/vue';
+import { IonButton, IonInput, IonItem, IonLabel, IonIcon } from '@ionic/vue';
 import { mailOutline, logInOutline, keyOutline } from 'ionicons/icons';
+import { useAuthStore } from '@/store/auth';
 
-const formData = {
-    email:'',
-    contrasena:'',
-}
+const authStore = useAuthStore()
 
-async function openToast(msg:string) {
-    const toast = await toastController
-    .create({
-        message: msg,
-        duration: 2000
-    })
-    return toast.present();
-}
 
 </script>

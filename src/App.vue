@@ -5,40 +5,28 @@
 </template>
 
 <script lang="ts" setup>
-import { IonApp, IonRouterOutlet, toastController } from '@ionic/vue';
+import { IonApp, IonRouterOutlet, } from '@ionic/vue';
 import { onAuthStateChanged } from "firebase/auth";
-// import { computed } from 'vue';
 import { useAuthStore } from './store/auth';
 import { auth } from './firebase';
+import router from './router';
+import { useToast } from "@/composables/useFunctionallyCompoonent";
 
-const data = useAuthStore()
+const { openToast, icons } = useToast() 
 
-
-async function openToast(msg:string) {
-  const toast = await toastController
-  .create({
-      message: msg,
-      duration: 2000
-  })
-  return toast.present();
-}
-
+const authStore = useAuthStore()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    const uid = user.uid;
-    data.isLoggedIn = true;
-    openToast('sesion de usuario activa');
-    console.log('verdadero ' + uid)
+      const uid = user.uid;
+      authStore.isLoggedIn = true;
+      openToast('Bienvenido', 'success', icons.check);
+      console.log('verdadero ' + uid)
   } else {
-    data.isLoggedIn = false;
-    openToast('no hay sesion de usuario');
-    console.log('falso')
+      authStore.isLoggedIn = false;
+      router.push('/');
+      openToast('no hay sesion de usuario', 'danger', icons.close);
+      console.log('falso')
   }
-});
-
-
-// computed(
-//   () => onAuthStateChanged,
-// )
+})
 </script>

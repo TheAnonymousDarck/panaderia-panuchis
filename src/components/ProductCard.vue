@@ -45,7 +45,7 @@
 
 <script lang="ts" setup>
 import { IonCard, IonCardContent, IonGrid, IonRow, IonCol, IonCardTitle, IonIcon, IonItem, IonLabel, IonButton, IonImg } from '@ionic/vue';
-import { addCircleOutline, removeCircleOutline, cartOutline } from 'ionicons/icons';
+import { addCircleOutline, cartOutline } from 'ionicons/icons';
 import { useCartStore } from '@/store/cart';
 import { defineProps} from 'vue'
 
@@ -66,7 +66,7 @@ const productos = {
     imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9EoNqp9I74KMrwEkYampF8MgoMURx1oMBrA&usqp=CAU'
 };
 
-const total = 150;
+// const total = 150;
 
 function log() {
     

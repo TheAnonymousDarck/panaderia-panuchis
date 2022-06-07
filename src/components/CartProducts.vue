@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from '@ionic/vue';
+import { IonList, IonLabel } from '@ionic/vue';
 import { addCircleOutline, removeCircleOutline  } from 'ionicons/icons';
 
 

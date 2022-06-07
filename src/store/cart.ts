@@ -16,10 +16,10 @@ export const useCartStore = defineStore('car', {
             return;
         },
         addProduct( product: Product ){
-            return;
+            return product;
         },
         removeProduct( product: Product ){
-            return;
+            return product;
         },
         makeOrder(){
             return;

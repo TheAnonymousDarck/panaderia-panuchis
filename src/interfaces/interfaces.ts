@@ -1,11 +1,12 @@
 export interface Client {
     uid: string;
     nombre: string;
+    password: string;
     foto: string,
     direccion: string;
     telefono: number;
     correo: string;
-    rol: string;
+    isAdmin: boolean;
 }
 
 
