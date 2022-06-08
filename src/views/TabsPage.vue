@@ -15,7 +15,7 @@
           <ion-label>Ordenes</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="profile" href="/tabs/product">
+        <ion-tab-button tab="product" href="/tabs/product">
           <ion-icon :icon="cubeOutline" />
           <ion-label>Productos</ion-label>
         </ion-tab-button>

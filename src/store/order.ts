@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
 import { Product } from './../interfaces/interfaces';
 
-export const useCartStore = defineStore('car', {
+export const useOrderStore = defineStore('car', {
     // lo que quiero mantener en el estado de manera global va aquí
     state: () => ({ 
-        cart: [] ,
+        order: [] ,
     }),
 
     // los metodos globales de este Store
@@ -16,10 +16,10 @@ export const useCartStore = defineStore('car', {
             return;
         },
         addProduct( product: Product ){
-            return console.log(product);
+            return product;
         },
         removeProduct( product: Product ){
-            return console.log(product);
+            return product;
         },
         makeOrder(){
             return;

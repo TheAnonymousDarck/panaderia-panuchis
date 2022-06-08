@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Carrito</ion-title>
+        <ion-title>Productos</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
