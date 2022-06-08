@@ -2,12 +2,12 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Carrito</ion-title>
+        <ion-title>Productos</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
 
-    <!-- Aqui va el Crud -->
+      <ProductPage></ProductPage>
 
     </ion-content>
   </ion-page>
@@ -15,6 +15,6 @@
 
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-
+import ProductPage from '@/components/ProductPage.vue';
 
 </script>
