@@ -4,7 +4,7 @@ import router from "@/router";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, db } from "@/firebase";
 
-import { useToast } from "@/composables/useFunctionallyCompoonent";
+import { useToast } from "@/composables/useFunctionallyComponent";
 import { Client } from '@/interfaces/interfaces';
 import { doc, setDoc } from 'firebase/firestore';
 

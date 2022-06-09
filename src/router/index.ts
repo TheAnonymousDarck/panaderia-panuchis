@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 
-import IndexPage from '@/views/IndexPage.vue';
-import TabsPage from '@/views/TabsPage.vue';
 import { auth } from '@/firebase';
 import { onAuthStateChanged, } from 'firebase/auth';
-import { useToast } from '@/composables/useFunctionallyCompoonent';
+
+import IndexPage from '@/views/IndexPage.vue';
+import TabsPage from '@/views/TabsPage.vue';
+
+import { useToast } from '@/composables/useFunctionallyComponent';
 
 const { openToast, icons } = useToast()
 
@@ -19,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     redirect: '/tabs/home',
     meta: { requiresAuth: true }
+  },
+  {
+    path:'/test',
+    name:'test',
+    component: () => import('@/components/TestComponent.vue')
   },
   {
     path: '/tabs/',
@@ -52,7 +59,19 @@ const routes: Array<RouteRecordRaw> = [
         path: 'product',
         component: () => import('@/views/TabProductPage.vue'),
         meta: { requiresAuth: true }
-      }
+      },
+      {
+        path: 'product/create',
+        component: () => import('@/components/ProductsCrud/CreateProduct.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'product/edit/:productId',
+        name:'editProduct',
+        props: true,
+        component: () => import('@/components/ProductsCrud/EditProductModal.vue'),
+        meta: { requiresAuth: true }
+    },
     ]
   },
 ]

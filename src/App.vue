@@ -14,7 +14,7 @@ import { auth } from './firebase';
 import { useAuthStore } from './store/auth';
 import { useUserStore } from './store/user';
 
-import { useToast } from "@/composables/useFunctionallyCompoonent";
+import { useToast } from "@/composables/useFunctionallyComponent";
 
 const { openToast, icons } = useToast() 
 

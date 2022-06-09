@@ -13,9 +13,10 @@ export interface Client {
 export interface Product {
     nombre: string;
     descripcion: string;
-    imagen: string;
+    foto: string;
     precio: number;
     cantidad: number;
+    fecha: Date;
     disponible: boolean;
 }
 

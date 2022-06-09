@@ -8,8 +8,15 @@
     <ion-content :fullscreen="true">
 
       <ion-list >
-        <product-card/>
-        
+        <!-- <ion-item > -->
+          
+          <ProductCard
+            v-for="product in productStore.products" :key="product.nombre"
+            :product="product"
+          />
+        <!-- </ion-item> -->
+          
+        <!-- <TestComponent/> -->
       </ion-list>
 
 
@@ -20,6 +27,14 @@
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList } from '@ionic/vue';
 import ProductCard from '@/components/ProductCard.vue';
+// import TestComponent from '@/components/TestComponent.vue';
+import { useProductStore } from '@/store/product';
+import { onMounted } from 'vue';
 
+const productStore = useProductStore()
+
+onMounted(() => {
+  productStore.getProducts()
+})
 
 </script>

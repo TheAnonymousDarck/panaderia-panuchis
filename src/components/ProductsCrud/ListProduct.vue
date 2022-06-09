@@ -30,7 +30,7 @@ import { removeCircleOutline, readerOutline  } from 'ionicons/icons';
 
 </script>
 
-<style>
+<style scoped>
     .fotillo{
         width: 20%;
     }
