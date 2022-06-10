@@ -13,19 +13,19 @@
                 <ion-item>
                     <ion-icon slot="start" :icon="textOutline"></ion-icon>
                     <ion-label position="floating">Nombre</ion-label>
-                    <ion-input v-model="productStore.nombre" required></ion-input>
+                    <ion-input minlength="5" v-model="productStore.nombre" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="createOutline"></ion-icon>
                     <ion-label position="floating">descripción</ion-label>
-                    <ion-input v-model="productStore.descripcion" required></ion-input>
+                    <ion-input minlength="10" v-model="productStore.descripcion" required></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="imageOutline"></ion-icon>
                     <ion-label position="floating">Foto</ion-label>
-                    <ion-input type="text" v-model="productStore.foto" required></ion-input>
+                    <ion-input type="text" v-model="productStore.foto"></ion-input>
                 </ion-item>
 
                 <ion-item>
@@ -37,7 +37,7 @@
                 <ion-item>
                     <ion-icon slot="start" :icon="statsChartOutline"></ion-icon>
                     <ion-label position="floating">Cantidad</ion-label>
-                    <ion-input type="number" v-model="productStore.cantidad" required ></ion-input>
+                    <ion-input minlength="1" type="number" v-model="productStore.cantidad" required ></ion-input>
                 </ion-item>
 
                 <ion-item>
