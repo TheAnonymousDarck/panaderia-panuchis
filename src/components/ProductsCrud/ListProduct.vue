@@ -1,37 +1,48 @@
 <template>
-    <ion-grid>
-    <ion-row>
-        <ion-col>
-        <ion-list >
-            <ion-item>
-            <ion-label>
-                <h2>Panvergudo</h2>
-                <ion-img class="fotillo" :src="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9EoNqp9I74KMrwEkYampF8MgoMURx1oMBrA&usqp=CAU'" ></ion-img>
-                <h3>$100</h3>
-                <p>Rico pan pa que te lo comas</p>
-            </ion-label>
-            <ion-icon :icon="readerOutline" ></ion-icon>
-            <ion-icon :icon="removeCircleOutline"></ion-icon>
-            </ion-item>
-        </ion-list>
-        <ng-template>
-            <h3>No hay contactos añadidos</h3>
-        </ng-template>
-        </ion-col>
-    </ion-row>
-    </ion-grid>
+
+<ion-item>
+    <ion-item>
+        <ion-avatar>
+            <ion-img  :src="product.foto" ></ion-img>
+        </ion-avatar>
+    </ion-item>
+    <ion-label>
+        <h2>{{ product.nombre }} </h2>
+        <p> {{ product.descripcion }} </p>
+    </ion-label>
+
+    <ion-icon  :icon="createOutline" @click="router.push(`/tabs/product/edit/${product.id}`)"/>
+    <ion-icon  :icon="trashOutline" @click="log(product.id)"/>
+</ion-item>
+
+
 </template>
 
 <script lang="ts" setup>
-import { IonList, IonLabel, IonImg } from '@ionic/vue';
-import { removeCircleOutline, readerOutline  } from 'ionicons/icons';
+import router from '@/router';
+import { IonLabel, IonImg, IonItem, IonAvatar, IonIcon } from '@ionic/vue';
+import { createOutline, trashOutline  } from 'ionicons/icons';
+import { defineProps } from 'vue'
 
+defineProps({
+    product: {
+        type: Object,
+        required: true
+    },
+    isOpen: {
+        type: Boolean,
+        default: false
+    },
+})
+
+//funcion para testear
+function log(id:any) {
+    console.log(id)
+}
+
+// function openModal(contactId:any){
+//     router.push(`/edit/${productId}`)
+// }
 
 
 </script>
-
-<style scoped>
-    .fotillo{
-        width: 20%;
-    }
-</style>

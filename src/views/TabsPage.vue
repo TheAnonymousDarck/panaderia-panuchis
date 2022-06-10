@@ -6,8 +6,8 @@
 
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="home" href="/tabs/home">
-          <ion-icon :icon="homeOutline" />
-          <ion-label>Inicio</ion-label>
+          <ion-icon :icon="storefrontOutline" />
+          <ion-label>Catalogo</ion-label>
         </ion-tab-button>
           
         <ion-tab-button tab="order" href="/tabs/order">
@@ -37,6 +37,6 @@
 
 <script lang="ts" setup>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { homeOutline, cartOutline, clipboardOutline, personOutline, cubeOutline } from 'ionicons/icons';
+import { storefrontOutline, cartOutline, clipboardOutline, personOutline, cubeOutline } from 'ionicons/icons';
 
 </script>

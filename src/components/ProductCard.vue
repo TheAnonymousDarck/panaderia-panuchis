@@ -4,8 +4,8 @@
         <ion-item>
             <ion-thumbnail>
                 <ion-img :src="product.foto" > </ion-img>
-        </ion-thumbnail> 
-            </ion-item>
+            </ion-thumbnail> 
+        </ion-item>
         <ion-label>
             <h2>{{ product.nombre }} </h2>
             <p> {{ product.descripcion }} </p>

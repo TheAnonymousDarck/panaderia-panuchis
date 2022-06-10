@@ -31,19 +31,19 @@
                 <ion-item>
                     <ion-icon slot="start" :icon="cashOutline"></ion-icon>
                     <ion-label position="floating">Precio</ion-label>
-                    <ion-input type="decimal" v-model="productStore.precio" required ></ion-input>
+                    <ion-input type="decimal" v-model="productStore.precio" required min="10" max="10"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="statsChartOutline"></ion-icon>
                     <ion-label position="floating">Cantidad</ion-label>
-                    <ion-input type="number" v-model="productStore.cantidad" required ></ion-input>
+                    <ion-input type="number" v-model="productStore.cantidad" required min="10" max="10"></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="calendarNumberOutline"></ion-icon>
                     <ion-label position="floating">fecha</ion-label>
-                    <ion-input type="datetime-local" v-model="productStore.fecha" required ></ion-input>
+                    <ion-input type="datetime-local" v-model="productStore.fecha" required min="10" max="10"></ion-input>
                 </ion-item>
 
                 <ion-button type="submit" expand="block" color="success">
@@ -56,6 +56,7 @@
                 <ion-icon slot="start" :icon="arrowBackOutline" ></ion-icon>
                 Cancelar
             </ion-button>
+            <pre> </pre>
 
 
         </ion-card-content>

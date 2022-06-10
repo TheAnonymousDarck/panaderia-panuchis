@@ -62,14 +62,14 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'product/create',
-        component: () => import('@/components/ProductsCrud/CreateProduct.vue'),
+        component: () => import('@/views/CreateProductPage.vue'),
         meta: { requiresAuth: true }
       },
       {
         path: 'product/edit/:productId',
         name:'editProduct',
         props: true,
-        component: () => import('@/components/ProductsCrud/EditProductModal.vue'),
+        component: () => import('@/views/EditProductPage.vue'),
         meta: { requiresAuth: true }
     },
     ]

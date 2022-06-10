@@ -1,5 +1,5 @@
 import { useToast } from "@/composables/useFunctionallyComponent";
-import { db } from "@/firebase";
+import { db, productsCollection } from "@/firebase";
 import router from "@/router";
 import { query, collection, orderBy, getDocs, addDoc, deleteDoc, doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { defineStore } from "pinia";
@@ -20,15 +20,16 @@ export const useProductStore = defineStore('product', {
         precio: 0,
         cantidad: 0,
         fecha: new Date(),
-        disponible: false,
+        disponible: true,
     }),
 
     // los metodos globales de este Store
     actions: {
-        addProduct(){ 
-            const docProductRef = doc(db, 'products');
+        async addProduct(){ 
             const newProduct: Product = {nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
-            setDoc(docProductRef, newProduct);
+            await addDoc(productsCollection, newProduct );
+            console.log('producto guardado', newProduct);
+            
         },
 
         async getProducts () {
@@ -54,7 +55,7 @@ export const useProductStore = defineStore('product', {
             // router.push("/");
         },
 
-        async editContact() {
+        async editContact(productId:any) {
             const docProductRef = doc(db, "products");
             // await setDoc(docProductRef, contactData);
             // setOpen(false);
