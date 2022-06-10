@@ -9,7 +9,7 @@
         </ion-card-header>
 
         <ion-card-content>
-            <form @submit.prevent="productStore.addProduct()">
+            <form @submit.prevent="productStore.editProduct(productId)">
                 <ion-item>
                     <ion-icon slot="start" :icon="textOutline"></ion-icon>
                     <ion-label position="floating">Nombre</ion-label>
@@ -31,24 +31,24 @@
                 <ion-item>
                     <ion-icon slot="start" :icon="cashOutline"></ion-icon>
                     <ion-label position="floating">Precio</ion-label>
-                    <ion-input type="decimal" v-model="productStore.precio" required min="10" max="10"></ion-input>
+                    <ion-input type="decimal" v-model="productStore.precio" required ></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="statsChartOutline"></ion-icon>
                     <ion-label position="floating">Cantidad</ion-label>
-                    <ion-input type="number" v-model="productStore.cantidad" required min="10" max="10"></ion-input>
+                    <ion-input type="number" v-model="productStore.cantidad" required ></ion-input>
                 </ion-item>
 
                 <ion-item>
                     <ion-icon slot="start" :icon="calendarNumberOutline"></ion-icon>
                     <ion-label position="floating">fecha</ion-label>
-                    <ion-input type="datetime-local" v-model="productStore.fecha" required min="10" max="10"></ion-input>
+                    <ion-input type="datetime-local" v-model="productStore.fecha" required ></ion-input>
                 </ion-item>
 
                 <ion-button type="submit" expand="block" color="success">
                     <ion-icon slot="start" :icon="bagAddOutline"></ion-icon>
-                    Agregar producto
+                    Guardar producto
                 </ion-button>
 
             </form>
@@ -69,14 +69,21 @@ import { IonCard, IonCardHeader,IonCardTitle, IonCardContent, IonItem, IonIcon, 
 import { arrowBackOutline, bagAddOutline, statsChartOutline, createOutline, calendarNumberOutline, imageOutline, cashOutline, textOutline  } from 'ionicons/icons';
 import { useProductStore } from '@/store/product';
 import router from '@/router';
-
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 const productStore =  useProductStore();
 
-function log() {
-    console.log('jala');
+const route = useRoute();
+const { productId } = route.params;
+
+onMounted(
+    () => productStore.getProductById(productId),
+)
+// function log() {
+//     console.log('jala');
     
-}
+// }
 
 
 </script>

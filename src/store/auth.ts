@@ -38,7 +38,6 @@ export const useAuthStore = defineStore('auth', {
                 .then( (userCredential) => {
                     const user = userCredential.user;
                     this.addUserDB(user.uid);
-                    // router.push('/tabs/home');
                     openToast('¡Usuario Registrado!', 'success', icons.check)
                 })
                 .catch( (error) => {
@@ -52,13 +51,9 @@ export const useAuthStore = defineStore('auth', {
             signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((userCredential) => {
                     openToast('¡Sesión iniciada Correctamente!');
-
                     router.push("/tabs/home");
-                    // this.routeAdmin === this.isAdmin ? router.push('/admin') :  router.push("/tabs/home");
-                    
                     const user = userCredential.user;
                     console.log(user);
-                    
                 })
                 .catch((error) => {
                     // const errorCode = error.code;

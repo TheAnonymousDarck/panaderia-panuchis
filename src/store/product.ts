@@ -1,7 +1,7 @@
 import { useToast } from "@/composables/useFunctionallyComponent";
 import { db, productsCollection } from "@/firebase";
 import router from "@/router";
-import { query, collection, orderBy, getDocs, addDoc, deleteDoc, doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
+import { query, collection, getDocs, addDoc, deleteDoc, doc, getDoc, updateDoc, } from "firebase/firestore";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { Product } from './../interfaces/interfaces';
@@ -14,6 +14,7 @@ export const useProductStore = defineStore('product', {
     state: () => ({ 
         // products: [],
         products: ref<any>([]),
+        product: ref<any>([]),
         nombre: '',
         descripcion: '',
         foto: '',
@@ -49,18 +50,44 @@ export const useProductStore = defineStore('product', {
         },
 
         async deleteProduct(productId:any) {
-            const contactRef = doc(db, productId);
-            await deleteDoc(contactRef);
-            openToast('prodcuto eliminado', 'success', icons.success)
-            // router.push("/");
+            const productRef = doc(db, "products", productId);
+            await deleteDoc(productRef);
+            openToast('producto eliminado', 'success', icons.success)
+            router.push('/tabs/product/');
         },
 
-        async editContact(productId:any) {
-            const docProductRef = doc(db, "products");
-            // await setDoc(docProductRef, contactData);
-            // setOpen(false);
-            // openToast();
-            router.push("/");
+        async getProductById(productId: any){
+            const productRef = doc(db, "products", productId);
+            const product = await getDoc(productRef);
+            this.product = product.data();
+
+            this.nombre = this.product.nombre;
+            this.descripcion = this.product.descripcion;
+            this.foto = this.product.foto;
+            this.precio = this.product.precio;
+            this.cantidad = this.product.cantidad;
+            this.fecha = this.product.fecha;
+        },
+
+
+        async editProduct(productId:any) {
+            const productRef = doc(db, "products", productId);
+            // const productUpdated: Product = {nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
+
+
+            await updateDoc(productRef, {
+                nombre: this.nombre,
+                descripcion: this.descripcion,
+                foto: this.foto,
+                precio: this.precio,
+                cantidad: this.cantidad,
+                fecha: this.fecha
+            });
+
+            openToast('producto editado correctamente', 'success', icons.success)
+
+            router.push('/tabs/product/');
+            // router.go(-1);
         }
 
         
