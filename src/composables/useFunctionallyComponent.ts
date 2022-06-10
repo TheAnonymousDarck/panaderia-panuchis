@@ -25,7 +25,8 @@ export const useToast = () => {
             })
             return toast.present();
         },
-        async presentAlertConfirm(msg:string, header:string, fnConfirmAction?:any, cssClassFirst?:string, cssClassBtn?:string) {
+        
+        async alertConfirm(msg:string, header:string, fnConfirmAction?:any, cssClassFirst?:string, cssClassBtn?:string) {
             const fnConfirmActionTemplate = () => {
                 console.log('Confirm Okay'); 
                 this.openToast('Acción realizada con exito', 'success', icons.success);

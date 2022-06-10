@@ -12,7 +12,7 @@
     </ion-label>
 
     <ion-icon  :icon="createOutline" @click="router.push(`/tabs/product/edit/${product.id}`)"/>
-    <ion-icon  :icon="trashOutline" @click="productStore.deleteProduct(product.id)"/>
+    <ion-icon  :icon="trashOutline" @click="productStore.alertDeleteProduct(product.id)"/>
 </ion-item>
 
 
@@ -25,8 +25,6 @@ import { createOutline, trashOutline  } from 'ionicons/icons';
 import { defineProps } from 'vue'
 import { useProductStore } from '@/store/product';
 
-const productStore = useProductStore()
-
 defineProps({
     product: {
         type: Object,
@@ -38,13 +36,11 @@ defineProps({
     },
 })
 
+const productStore = useProductStore()
+
 //funcion para testear
 // function log(id:any) {
 //     console.log(id)
-// }
-
-// function openModal(contactId:any){
-//     router.push(`/edit/${productId}`)
 // }
 
 

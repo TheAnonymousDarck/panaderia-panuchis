@@ -1,6 +1,7 @@
 import { useToast } from "@/composables/useFunctionallyComponent";
 import { db, productsCollection } from "@/firebase";
 import router from "@/router";
+import { alertController } from "@ionic/vue";
 import { query, collection, getDocs, addDoc, deleteDoc, doc, getDoc, updateDoc, } from "firebase/firestore";
 import { defineStore } from "pinia";
 import { ref } from "vue";
@@ -30,7 +31,8 @@ export const useProductStore = defineStore('product', {
             const newProduct: Product = {nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
             await addDoc(productsCollection, newProduct );
             console.log('producto guardado', newProduct);
-            
+            router.push('/tabs/product/');
+            this.getProducts();
         },
 
         async getProducts () {
@@ -47,13 +49,6 @@ export const useProductStore = defineStore('product', {
                 this.products.push(product);
                 console.log(this.products);
             });
-        },
-
-        async deleteProduct(productId:any) {
-            const productRef = doc(db, "products", productId);
-            await deleteDoc(productRef);
-            openToast('producto eliminado', 'success', icons.success)
-            router.push('/tabs/product/');
         },
 
         async getProductById(productId: any){
@@ -74,7 +69,6 @@ export const useProductStore = defineStore('product', {
             const productRef = doc(db, "products", productId);
             // const productUpdated: Product = {nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
 
-
             await updateDoc(productRef, {
                 nombre: this.nombre,
                 descripcion: this.descripcion,
@@ -83,12 +77,44 @@ export const useProductStore = defineStore('product', {
                 cantidad: this.cantidad,
                 fecha: this.fecha
             });
-
             openToast('producto editado correctamente', 'success', icons.success)
-
             router.push('/tabs/product/');
-            // router.go(-1);
-        }
+            this.getProducts();
+        },
+
+        async deleteProduct(productId:any) {
+            const productRef = doc(db, "products", productId);
+            await deleteDoc(productRef);
+            openToast('producto eliminado', 'success', icons.success)
+            router.push('/tabs/product/');
+            this.getProducts();
+        },
+
+        async alertDeleteProduct(productId:any) {
+            const alert = await alertController.create({
+                cssClass: 'tertuary',
+                header:'Confirmar acción',
+                message: 'Estas seguro que quieres <strong> eliminar </strong> este producto',
+                buttons: [
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        id: 'cancel-button',
+                        handler: blah => {
+                            console.log('Confirm Cancel:', blah)
+                        },
+                    },
+                    {
+                        text: 'Ok',
+                        cssClass:  'danger',
+                        id: 'confirm-button',
+                        handler: () => this.deleteProduct(productId),
+                    },
+                ],
+            });
+            return alert.present();
+        },
 
         
     },
