@@ -4,7 +4,7 @@
     <ion-content :fullscreen="true">
 
       <ListProduct 
-        v-for="product in productStore.products" :key="product.nombre"
+        v-for="product in productStore.products" :key="product.id"
         :product="product"
       />
       <ion-fab vertical="bottom" horizontal="center" slot="fixed" @click="router.push('/tabs/product/create')">
@@ -33,8 +33,5 @@ onMounted(() => {
   productStore.getProducts()
 })
 
-// function log() {
-//   console.log('Jala el floatting action button');
-// }
 
 </script>

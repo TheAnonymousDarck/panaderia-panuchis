@@ -16,6 +16,7 @@ export const useProductStore = defineStore('product', {
         // products: [],
         products: ref<any>([]),
         product: ref<any>([]),
+        id: 0,
         nombre: '',
         descripcion: '',
         foto: '',
@@ -28,12 +29,14 @@ export const useProductStore = defineStore('product', {
     // los metodos globales de este Store
     actions: {
         async addProduct(){ 
-            const newProduct: Product = {nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
+            const newProduct: Product = {id: this.increment(), nombre: this.nombre, descripcion: this.descripcion, foto: this.foto, precio: this.precio, cantidad:this.cantidad, fecha:this.fecha, disponible: this.disponible};
             await addDoc(productsCollection, newProduct );
             console.log('producto guardado', newProduct);
             router.push('/tabs/product/');
             this.getProducts();
         },
+
+        increment() { return this.id++},
 
         async getProducts () {
             const first = query(

@@ -3,18 +3,17 @@
 
         <ion-item>
             <ion-thumbnail>
-                <ion-img :src="product.foto" > </ion-img>
+                <ion-img :src="props.product.foto" > </ion-img>
             </ion-thumbnail> 
         </ion-item>
         <ion-label>
-            <h2>{{ product.nombre }} </h2>
-            <p> {{ product.descripcion }} </p>
+            <h2>{{ props.product.nombre }} </h2>
+            <p> {{ props.product.descripcion }} </p>
         </ion-label>
-
         <ion-item>
-            <ion-label>$ {{ product.precio }}</ion-label>
+            <ion-label>$ {{ props.product.precio }}</ion-label>
             <ion-item>
-                <ion-button @click="log()" color="success" fill="outline" expand="block" shape="round">
+                <ion-button @click="addCart()" color="success" fill="outline" expand="block" shape="round">
                     <ion-icon :icon="addCircleOutline" ></ion-icon>
                     <ion-icon :icon="cartOutline" ></ion-icon>
                 </ion-button>
@@ -56,22 +55,23 @@
 
 <script lang="ts" setup>
 import { Product } from '@/interfaces/interfaces';
-import { IonCard, IonCardContent, IonGrid, IonRow, IonCol, IonCardTitle, IonThumbnail, IonIcon, IonItem, IonLabel, IonButton, IonImg } from '@ionic/vue';
+import { IonThumbnail, IonIcon, IonItem, IonLabel, IonButton, IonImg } from '@ionic/vue';
 import { addCircleOutline, cartOutline } from 'ionicons/icons';
-// import { useCartStore } from '@/store/cart';
+import { useCartStore } from '@/store/cart';
 import { defineProps} from 'vue'
+import { storeToRefs } from 'pinia';
 
-defineProps({
-    product: {
-        type: Object,
-        required: true,
-    },
+const props = defineProps<{
+    product: Product
+}>()
 
-})
+const cartStore = useCartStore()
+const {cart} = storeToRefs(cartStore)
 
-function log() {
+function addCart(){
+    cartStore.addCart({id: props.product.id, cantidad: 1})
+    console.log("cart", cart.value)
     
-    console.log('funciona');
 }
 
 </script>

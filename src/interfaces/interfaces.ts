@@ -9,8 +9,8 @@ export interface Client {
     isAdmin: boolean;
 }
 
-
 export interface Product {
+    id: number;
     nombre: string;
     descripcion: string;
     foto: string;
@@ -20,6 +20,25 @@ export interface Product {
     disponible: boolean;
 }
 
+export interface ProductCart {
+    id: number;
+    cantidad: number;
+}
+
+export interface Cart{
+    id: string;
+    products: Array<ProductCart>
+}
+
+export interface DisplayCart{
+    nombre: string
+    precio: number
+    currency: string
+    cantidad: number
+    inStock: boolean
+    id: number
+    color: string
+}
 
 export interface Order {
     id: string;
@@ -30,7 +49,6 @@ export interface Order {
     fecha: Date;
     // valoracon: number;
 }
-
 
 export interface ProductOrder {
     producto: Product;

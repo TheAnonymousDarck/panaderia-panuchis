@@ -14,5 +14,13 @@
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import CartProducts from '@/components/CartProducts.vue';
+import { onMounted } from 'vue';
+import { useCartStore } from '@/store/cart';
+
+const cartStore = useCartStore()
+
+onMounted(
+  () => cartStore.loadCart()
+)
 
 </script>

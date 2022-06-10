@@ -7,7 +7,7 @@
         <!-- <ion-item > -->
           
           <ProductCard
-            v-for="product in productStore.products" :key="product.nombre"
+            v-for="product in productStore.products" :key="product.id"
             :product="product"
           />
         <!-- </ion-item> -->
