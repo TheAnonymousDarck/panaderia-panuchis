@@ -50,7 +50,7 @@ export const useProductStore = defineStore('product', {
                 const product = doc.data();
                 product.id = doc.id;
                 this.products.push(product);
-                console.log(this.products);
+                // console.log(this.products);
             });
         },
 

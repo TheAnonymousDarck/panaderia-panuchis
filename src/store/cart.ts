@@ -4,11 +4,18 @@ import {v4 as uuid4} from 'uuid'
 
 interface State{
     cart: Cart | any,
-    displayCart: DisplayCart[] | []
+    displayCart: DisplayCart[] | [],
+    nombre: string,
+    precio: number,
 }
 
 export const useCartStore = defineStore('cart', {
-    state: () => ({ cart: {}, displayCart: [] } as State),
+    state: () => ({ 
+        cart: {}, 
+        displayCart: [],
+        nombre: '',
+        precio: 0,
+    } as State),
 
     actions: {
         loadCart(){
@@ -18,10 +25,7 @@ export const useCartStore = defineStore('cart', {
             else
             this.cart = JSON.parse(cs)
         },
-        getCart(){
-            return;
-        },
-        addCart( product: ProductCart ){
+        addCart( product: ProductCart){
             const cs = localStorage.getItem('cart')
 
             let isAdded = false
@@ -38,15 +42,18 @@ export const useCartStore = defineStore('cart', {
                 cartLocalStorage.products = cartLocalStorage.products.map((cartItem : ProductCart) => {
                     if(cartItem.id == product.id){
                         isAdded = true
-                        return {id: cartItem.id, cantidad: cartItem.cantidad + 1}
+                        return {id: cartItem.id,nombre: cartItem.nombre, precio:cartItem.precio , cantidad: cartItem.cantidad + 1}
                     }
-                    return {id: cartItem.id, cantidad: cartItem.cantidad}
+                    return {id: cartItem.id,nombre: cartItem.nombre, precio:cartItem.precio , cantidad: cartItem.cantidad}
                 })
 
-                if(!isAdded)
-                cartLocalStorage.products.push({id: product.id, cantidad: product.cantidad})
-
+                if(!isAdded){
+                    cartLocalStorage.products.push({id: product.id, nombre: product.nombre, precio:product.precio , cantidad: product.cantidad})
+                    
+                }
                 this.cart = cartLocalStorage
+                this.displayCartLoad()
+                
             }
 
             localStorage.setItem('cart', JSON.stringify(this.cart))
@@ -59,27 +66,26 @@ export const useCartStore = defineStore('cart', {
         },
 
         displayCartLoad(){
-        //     this.displayCart = (this.cart as Cart).products.map(cartItem => {
-        //         const requiredProduct = productData.filter(p => p.id == cartItem.id)
-        //         // if(requiredProduct[0].stock >= cartItem.cantidad)
-        //         return {
-        //             id:cartItem.id,
-        //             name: requiredProduct[0].name, 
-        //             price: requiredProduct[0].price, 
-        //             cantidad: cartItem.cantidad, 
-        //             color: requiredProduct[0].color,
-        //             currency: requiredProduct[0].currency, 
-        //             inStock: requiredProduct[0].stock >= cartItem.cantidad ? true : false
-        //         }
-        //     })
+            this.displayCart = (this.cart as Cart).products.map(cartItem => {
+                // const requiredProduct = this.cart.products.id.filter((p: { id: number; }) => p.id == cartItem.id)
+                // const requiredProduct = this.getProps
+                // console.log(this.getProps);
+
+                return {
+                    id:cartItem.id,
+                    nombre: cartItem.nombre, 
+                    precio: cartItem.precio,
+                    cantidad: cartItem.cantidad, 
+                    // disponible: data.stock >= cartItem.cantidad ? true : false
+                }
+            })
 
         },
-        makeOrder(){
-            return;
-        },
+
         clearCart(){
-            return;
-        },
+            this.cart = {};
+            this.displayCart = [];
+        }
 
     },
 });

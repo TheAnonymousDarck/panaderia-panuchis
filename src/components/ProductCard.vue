@@ -69,9 +69,13 @@ const cartStore = useCartStore()
 const {cart} = storeToRefs(cartStore)
 
 function addCart(){
-    cartStore.addCart({id: props.product.id, cantidad: 1})
+    cartStore.addCart({
+    id: props.product.id, cantidad: 1,
+    nombre: props.product.nombre,
+    precio: props.product.precio
+})
+    // cartStore.getProps(props.product.nombre, props.product.precio)
     console.log("cart", cart.value)
-    
 }
 
 </script>

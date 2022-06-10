@@ -22,6 +22,8 @@ export interface Product {
 
 export interface ProductCart {
     id: number;
+    nombre:string;
+    precio:number;
     cantidad: number;
 }
 
@@ -33,11 +35,10 @@ export interface Cart{
 export interface DisplayCart{
     nombre: string
     precio: number
-    currency: string
+    // divisa: string
     cantidad: number
-    inStock: boolean
+    // disponible: boolean
     id: number
-    color: string
 }
 
 export interface Order {
